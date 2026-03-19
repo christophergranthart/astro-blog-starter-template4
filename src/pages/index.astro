@@ -1,50 +1,226 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-import { SITE_TITLE, SITE_DESCRIPTION } from '../consts';
+// Welcome to Astro! 
+// Everything between these triple-dash lines runs at build time.
+const pageTitle = "West Coast Homecare Services | Peace of Mind";
+const brandPink = "#E6007E";
+const brandBlue = "#32B5E5";
+const brandNavy = "#1A2B49";
+const sand = "#F4F1EA";
+
+const services = [
+  "Day & Night Care",
+  "Meal Preparation",
+  "Light Housekeeping",
+  "Medication Reminders",
+  "Hygiene & Dressing",
+  "Dementia Care",
+  "24h Frail Care",
+  "Personalised Proposals"
+];
 ---
 
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
-	<body>
-		<Header />
-		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This
-				template serves as a lightweight, minimally-styled starting point for anyone looking to build
-				a personal website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to <a href="https://docs.astro.build/"
-					>read the docs
-				</a> or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out <a
-					href="https://github.com/Charca/astro-blog-template"
-					>astro-blog-template
-				</a> by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
-		</main>
-		<Footer />
-	</body>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style define:vars={{ brandPink, brandBlue, brandNavy, sand }}>
+        /* Astro's define:vars helper lets us pass the JS variables into CSS */
+        body {
+            font-family: 'Comfortaa', cursive;
+            margin: 0;
+            color: var(--brandNavy);
+            background-color: #ffffff;
+            line-height: 1.6;
+        }
+
+        /* --- NAVIGATION --- */
+        header {
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1.2fr;
+            align-items: center;
+            padding: 0 5%;
+            background: #ffffff;
+            border-bottom: 1px solid #eee;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            height: 90px;
+        }
+
+        .header-left { display: flex; align-items: center; gap: 12px; }
+        .logo-small { height: 55px; width: auto; border-radius: 50%; }
+        .logo-details { display: flex; flex-direction: column; }
+        .logo-text { font-weight: 700; font-size: 0.85rem; line-height: 1.1; margin: 0; text-transform: uppercase; }
+        .reg-no { font-size: 0.6rem; opacity: 0.7; margin-top: 2px; }
+
+        nav { display: flex; justify-content: center; gap: 30px; height: 100%; }
+        nav a {
+            text-decoration: none;
+            color: var(--brandNavy);
+            font-size: 0.9rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            position: relative;
+            height: 100%;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: var(--brandBlue); }
+        nav a:hover::after {
+            content: ''; position: absolute; bottom: 0; left: 0; width: 100%; height: 4px; background: var(--brandBlue);
+        }
+
+        .header-right { display: flex; justify-content: flex-end; gap: 22px; }
+        .header-right a { color: var(--brandNavy); font-size: 1.4rem; transition: 0.2s; text-decoration: none; }
+        .header-right a:hover { color: var(--brandPink); transform: translateY(-2px); }
+
+        /* --- HERO --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 60px 8%;
+            background: linear-gradient(135deg, #fff 70%, var(--sand) 100%);
+        }
+        .hero-text { flex: 1; max-width: 550px; }
+        .hero-text h1 { font-size: 2.8rem; line-height: 1.1; margin-bottom: 20px; }
+        .hero-text h1 span { color: var(--brandPink); }
+        .hero-text p { font-size: 1.1rem; margin-bottom: 30px; }
+
+        .hero-art { flex: 1; display: flex; justify-content: center; }
+        .hero-art img { width: 85%; max-width: 420px; border-radius: 50%; box-shadow: 0 15px 35px rgba(0,0,0,0.1); }
+
+        /* --- PILLS --- */
+        .services { padding: 60px 8%; text-align: center; }
+        .service-grid { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; margin-top: 40px; }
+        .pill {
+            background: var(--sand);
+            padding: 12px 28px;
+            border-radius: 100px;
+            font-weight: 700;
+            font-size: 0.85rem;
+            border: 2px solid transparent;
+            transition: 0.3s;
+        }
+        .pill:hover { background: #ffffff; border-color: var(--brandBlue); transform: translateY(-3px); }
+
+        /* --- REEL --- */
+        .reel-section { padding: 80px 8%; background-color: var(--sand); text-align: center; }
+        .reel-container {
+            max-width: 360px;
+            margin: 0 auto;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+            background: #000;
+            border: 5px solid #ffffff;
+        }
+        .reel-section h2 { margin-bottom: 30px; color: var(--brandNavy); }
+
+        /* --- FOOTER --- */
+        .contact-cta { background-color: var(--brandBlue); color: #ffffff; padding: 60px 8%; text-align: center; }
+        .eval-btn {
+            background-color: var(--brandPink);
+            color: #ffffff;
+            padding: 18px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            margin-top: 20px;
+            transition: 0.3s;
+        }
+        .eval-btn:hover { background-color: var(--brandNavy); }
+
+        footer { background: var(--brandNavy); color: #ffffff; padding: 40px 8%; text-align: center; font-size: 0.85rem; }
+
+        @media (max-width: 950px) {
+            header { grid-template-columns: 1fr 1fr; height: auto; padding: 15px 5%; }
+            nav { display: none; }
+            .hero { flex-direction: column; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="header-left">
+            <img src="/West CoastArtisticBanner.jpg" alt="Logo" class="logo-small">
+            <div class="logo-details">
+                <p class="logo-text">WEST COAST<br>HOMECARE</p>
+                <span class="reg-no">REG: 2024/129640/07</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#" class="active">Home</a>
+            <a href="#services">Services</a>
+            <a href="#updates">Updates</a>
+            <a href="#contact">Contact</a>
+        </nav>
+
+        <div class="header-right">
+            <a href="tel:0621247451"><i class="fa-solid fa-phone"></i></a>
+            <a href="mailto:info@westcoasthomecareservices.co.za"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://wa.me/27621247451" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Giving you <br><span>Peace of Mind.</span></h1>
+            <p>Taking Home Based Services To The Next Level. Professional care for the elderly, frail, and specialized dementia support.</p>
+            <a href="tel:0621247451" class="eval-btn">FREE HOME EVALUATION</a>
+        </div>
+        <div class="hero-art">
+            <img src="/West CoastArtisticBanner.jpg" alt="Artistic Banner">
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2>Our Home Care Services</h2>
+        <div class="service-grid">
+            {services.map((service) => (
+                <div class="pill">{service}</div>
+            ))}
+        </div>
+    </section>
+
+    <section class="reel-section" id="updates">
+        <h2>See Us In Action</h2>
+        <div class="reel-container">
+            <iframe 
+                src="https://www.facebook.com/plugins/video.php?height=640&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1443689007432767%2F&show_text=false&width=360&t=0" 
+                width="360" 
+                height="640" 
+                style="border:none;overflow:hidden" 
+                scrolling="no" 
+                frameborder="0" 
+                allowfullscreen="true" 
+                allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
+            </iframe>
+        </div>
+    </section>
+
+    <section class="contact-cta" id="contact">
+        <h2>Need help with a loved one?</h2>
+        <p>Call Nadine Saunders today for a personalized evaluation of your home care needs.</p>
+        <a href="tel:0621247451" class="eval-btn">CALL 062 124 7451</a>
+    </section>
+
+    <footer>
+        <span class="footer-logo">WEST COAST HOMECARE SERVICES (Pty) Ltd</span>
+        <p>Nadine Saunders | info@westcoasthomecareservices.co.za</p>
+        <span class="footer-reg">REG: 2024/129640/07 | Giving you Peace of Mind</span>
+    </footer>
+
+</body>
 </html>
