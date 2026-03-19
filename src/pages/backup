@@ -1,0 +1,17 @@
+/* Adds a thick "Frame" look to your funky images */
+        .hero-art img { 
+            width: 100%; 
+            max-width: 500px; 
+            border: 10px solid var(--deepCharcoal); 
+            box-shadow: 20px 20px 0 var(--retroGold); /* Offset solid shadow */
+            transition: 0.3s ease;
+        }
+
+        /* Makes the service cards look like modern art icons */
+        .reason-card { 
+            padding: 40px; 
+            background: var(--white); 
+            border-left: 15px solid var(--retroPink); /* Bold vertical stripe */
+            border-bottom: 5px solid var(--deepCharcoal);
+            text-align: left;
+        }
