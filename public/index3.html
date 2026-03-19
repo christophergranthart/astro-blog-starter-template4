@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>West Coast Home Care Services | Peace of Mind</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --brand-pink: #E6007E;
+            --brand-blue: #32B5E5;
+            --brand-navy: #1A2B49;
+            --sand: #F4F1EA;
+            --white: #ffffff;
+        }
+
+        body {
+            font-family: 'Comfortaa', cursive;
+            margin: 0;
+            color: var(--brand-navy);
+            background-color: var(--white);
+            line-height: 1.6;
+        }
+
+        /* TOP CONTACT STRIP */
+        .top-bar {
+            background-color: var(--brand-navy);
+            color: white;
+            padding: 10px 8%;
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.8rem;
+            font-weight: 700;
+        }
+
+        .top-bar a { color: var(--brand-blue); text-decoration: none; }
+
+        /* HEADER & NAVIGATION */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 8%;
+            border-bottom: 1px solid #eee;
+            background: white;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .logo-small {
+            height: 55px;
+            width: auto;
+        }
+
+        .logo-text { font-weight: 700; font-size: 1rem; line-height: 1.2; }
+        .logo-text span.blue-text { color: var(--brand-blue); }
+        .logo-text span.pink-text { color: var(--brand-pink); }
+
+        nav a {
+            text-decoration: none;
+            color: var(--brand-navy);
+            margin-left: 20px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 80px 8%;
+            background: linear-gradient(135deg, #fff 60%, var(--sand) 100%);
+        }
+
+        .hero-text { flex: 1; max-width: 550px; }
+        .hero-text h1 { font-size: 3rem; line-height: 1.1; margin-bottom: 15px; }
+        .hero-text h1 span { color: var(--brand-pink); }
+        .hero-text p { font-size: 1.2rem; margin-bottom: 25px; color: var(--brand-navy); font-weight: 400; }
+        .hero-tagline { color: var(--brand-blue); font-weight: 700; margin-bottom: 30px; display: block; }
+
+        .hero-art { flex: 1; display: flex; justify-content: center; }
+        .hero-art img {
+            width: 85%;
+            max-width: 450px;
+            filter: drop-shadow(0px 20px 40px rgba(0,0,0,0.1));
+            border-radius: 50%;
+        }
+
+        /* SERVICES SECTION */
+        .services { padding: 80px 8%; text-align: center; background-color: #fcfcfc; }
+        .services h2 { margin-bottom: 40px; font-size: 2.2rem; }
+
+        .service-grid {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* CLEAN PILL SHAPES */
+        .card {
+            background: var(--white);
+            padding: 20px 35px;
+            flex: 1 1 280px;
+            max-width: 320px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 80px;
+            border-radius: 100px; /* Perfect Pill Shape */
+            border: 2px solid var(--sand);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+        }
+
+        .card:hover {
+            border-color: var(--brand-blue);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(50, 181, 229, 0.1);
+        }
+
+        .card h3 { margin: 0; font-size: 0.95rem; font-weight: 700; }
+
+        /* CONTACT SECTION */
+        .contact-cta {
+            padding: 80px 8%;
+            background-color: var(--brand-blue);
+            color: white;
+            text-align: center;
+        }
+
+        .contact-cta h2 { font-size: 2.5rem; margin-bottom: 10px; }
+        .contact-cta p { font-size: 1.2rem; margin-bottom: 35px; }
+
+        .cta-white-btn {
+            background-color: white;
+            color: var(--brand-blue);
+            padding: 20px 45px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: 0.3s;
+        }
+        .cta-white-btn:hover { background-color: var(--brand-pink); color: white; }
+
+        /* FOOTER */
+        footer {
+            padding: 40px 8%;
+            background-color: var(--brand-navy);
+            color: rgba(255,255,255,0.7);
+            text-align: center;
+            font-size: 0.85rem;
+        }
+
+        .footer-info { margin-bottom: 20px; color: white; }
+        .reg-no { font-size: 0.75rem; display: block; margin-top: 10px; opacity: 0.6; }
+
+        @media (max-width: 768px) {
+            .hero { flex-direction: column; text-align: center; }
+            .top-bar { flex-direction: column; align-items: center; gap: 5px; }
+            header { flex-direction: column; gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="top-bar">
+        <span>NADINE SAUNDERS: 0621247451</span>
+        <span>Email: <a href="mailto:info@westcoasthomecareservices.co.za">info@westcoasthomecareservices.co.za</a></span>
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <img src="img/West CoastArtisticBanner.jpg" alt="Logo" class="logo-small">
+            <div class="logo-text">
+                WEST COAST<br><span class="blue-text">HOME CARE</span> <span class="pink-text">SERVICES</span>
+            </div>
+        </div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#services">Services</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <h1>Giving you <span>Peace of Mind.</span></h1>
+            <p>Taking Home Based Services To The Next Level with compassionate, professional care in the heart of the West Coast.</p>
+            <span class="hero-tagline">Compassionate Care. Professional Excellence.</span>
+            <a href="#contact" class="cta-white-btn" style="background-color: var(--brand-pink); color: white;">FREE HOME EVALUATION</a>
+        </div>
+        <div class="hero-art">
+            <img src="img/West CoastArtisticBanner.jpg" alt="West Coast Care">
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <h2>Our Comprehensive Services</h2>
+        <div class="service-grid">
+            <div class="card"><h3>Day & Night Care</h3></div>
+            <div class="card"><h3>Meal Preparation</h3></div>
+            <div class="card"><h3>Light Housekeeping</h3></div>
+            <div class="card"><h3>Medication Reminders</h3></div>
+            <div class="card"><h3>Personal Hygiene & Dressing</h3></div>
+            <div class="card"><h3>Alzheimer’s & Dementia Care</h3></div>
+            <div class="card"><h3>24h Rotational Frail Care</h3></div>
+            <div class="card"><h3>Personalised Proposals</h3></div>
+        </div>
+    </section>
+
+    <section class="contact-cta" id="contact">
+        <h2>Call us for a free home evaluation</h2>
+        <p>Talk to Nadine Saunders about a personalised care plan for your loved one.</p>
+        <a href="tel:0621247451" class="cta-white-btn">CALL 062 124 7451</a>
+    </section>
+
+    <footer>
+        <div class="footer-info">
+            <strong>WEST COAST HOMECARE SERVICES (Pty) Ltd</strong><br>
+            Nadine Saunders | Cell: 062 124 7451<br>
+            Email: info@westcoasthomecareservices.co.za
+            <span class="reg-no">REG: 2024/129640/07</span>
+        </div>
+        &copy; 2026 West Coast Homecare Services. All Rights Reserved.
+    </footer>
+
+</body>
+</html>
