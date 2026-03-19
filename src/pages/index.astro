@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>West Coast Home Care Services | Peace of Mind</title>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     <style>
         :root {
             --brand-pink: #E6007E;
@@ -23,10 +23,10 @@
             line-height: 1.6;
         }
 
-        /* NEW HEADER LAYOUT (Astro Blog Style) */
+        /* --- HEADER LAYOUT (Astro Blog Style) --- */
         header {
             display: grid;
-            grid-template-columns: 1fr auto 1fr; /* Left, Center, Right */
+            grid-template-columns: 1fr auto 1fr; /* This keeps the center column centered */
             align-items: center;
             padding: 10px 5%;
             background: white;
@@ -34,114 +34,126 @@
             position: sticky;
             top: 0;
             z-index: 1000;
+            height: 80px;
         }
 
-        /* 1. Left: Logo & Registration */
+        /* 1. Left Section */
         .header-left {
             display: flex;
-            flex-direction: column;
-        }
-        .logo-container {
-            display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
         }
-        .logo-small { height: 45px; width: auto; border-radius: 50%; }
-        .logo-text { font-weight: 700; font-size: 0.9rem; line-height: 1; }
-        .reg-mini { font-size: 0.6rem; opacity: 0.6; margin-top: 2px; }
+        .logo-small { height: 50px; width: auto; }
+        .logo-details { display: flex; flex-direction: column; }
+        .logo-text { font-weight: 700; font-size: 0.9rem; line-height: 1.1; }
+        .reg-no { font-size: 0.65rem; opacity: 0.6; margin-top: 2px; }
 
-        /* 2. Center: Navigation links */
+        /* 2. Center Section (Menu) */
         nav {
             display: flex;
-            gap: 25px;
+            gap: 30px;
         }
         nav a {
             text-decoration: none;
             color: var(--brand-navy);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             font-weight: 700;
+            padding: 28px 0; /* Matches header height for the underline */
             position: relative;
-            padding: 5px 0;
+            transition: color 0.3s;
         }
-        /* The blue underline effect from your screenshot */
-        nav a:hover::after {
+        /* Blue underline from your screenshot */
+        nav a:hover, nav a.active {
+            color: var(--brand-navy);
+        }
+        nav a:hover::after, nav a.active::after {
             content: '';
             position: absolute;
-            bottom: 0;
+            bottom: -1px; /* Aligns with header border */
             left: 0;
             width: 100%;
-            height: 3px;
+            height: 4px;
             background: var(--brand-blue);
         }
 
-        /* 3. Right: Contact Icons */
+        /* 3. Right Section (Social/Contact Icons) */
         .header-right {
             display: flex;
             justify-content: flex-end;
-            gap: 20px;
-            font-size: 1.2rem;
+            gap: 18px;
         }
-        .header-right a { color: var(--brand-navy); transition: 0.3s; }
-        .header-right a:hover { color: var(--brand-blue); }
+        .header-right a {
+            color: var(--brand-navy);
+            font-size: 1.3rem;
+            transition: color 0.3s;
+        }
+        .header-right a:hover {
+            color: var(--brand-blue);
+        }
 
-        /* HERO SECTION */
+        /* --- HERO SECTION --- */
         .hero {
             display: flex;
             align-items: center;
-            padding: 60px 8%;
-            background: linear-gradient(135deg, #fff 60%, var(--sand) 100%);
+            padding: 80px 8%;
+            background: linear-gradient(135deg, #fff 70%, var(--sand) 100%);
         }
         .hero-text { flex: 1; max-width: 550px; }
-        .hero-text h1 { font-size: 2.8rem; line-height: 1.1; margin-bottom: 15px; }
+        .hero-text h1 { font-size: 3rem; line-height: 1.1; margin-bottom: 20px; }
         .hero-text h1 span { color: var(--brand-pink); }
-        .hero-text p { font-size: 1.1rem; margin-bottom: 30px; }
+        .hero-text p { font-size: 1.1rem; margin-bottom: 30px; color: #444; }
 
         .hero-art { flex: 1; display: flex; justify-content: center; }
-        .hero-art img { width: 80%; max-width: 400px; border-radius: 50%; }
+        .hero-art img { width: 85%; max-width: 450px; border-radius: 50%; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
 
-        /* SERVICE PILLS */
+        /* --- SERVICES PILLS --- */
         .services { padding: 60px 8%; text-align: center; }
+        .services h2 { margin-bottom: 40px; }
         .service-grid {
             display: flex;
-            gap: 15px;
+            gap: 12px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 40px;
         }
-        .card {
+        .pill {
             background: var(--sand);
-            padding: 15px 30px;
-            border-radius: 100px; /* Pill shape */
-            border: 1px solid transparent;
+            padding: 12px 28px;
+            border-radius: 100px;
             font-weight: 700;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
+            border: 1px solid transparent;
             transition: 0.3s;
-            cursor: default;
         }
-        .card:hover { border-color: var(--brand-blue); background: white; transform: scale(1.05); }
+        .pill:hover { background: white; border-color: var(--brand-blue); transform: translateY(-2px); }
 
-        /* FOOTER */
+        /* --- FOOTER --- */
         footer {
             background: var(--brand-navy);
             color: white;
-            padding: 40px 8%;
+            padding: 50px 8%;
             text-align: center;
         }
-        .footer-eval-btn {
+        .footer-btn {
             background: var(--brand-pink);
             color: white;
-            padding: 15px 30px;
+            padding: 18px 35px;
             border-radius: 50px;
             text-decoration: none;
+            font-weight: 700;
             display: inline-block;
             margin-bottom: 30px;
-            font-weight: 700;
         }
 
-        @media (max-width: 850px) {
-            header { grid-template-columns: 1fr; gap: 15px; text-align: center; }
-            .header-left, .header-right { justify-content: center; }
+        /* --- MOBILE RESPONSIVENESS --- */
+        @media (max-width: 900px) {
+            header {
+                grid-template-columns: 1fr 1fr;
+                height: auto;
+                padding: 20px 5%;
+            }
+            nav { display: none; } /* On mobile, you'd usually use a burger menu */
             .hero { flex-direction: column; text-align: center; }
+            .hero-text { margin-bottom: 40px; }
         }
     </style>
 </head>
@@ -149,32 +161,32 @@
 
     <header>
         <div class="header-left">
-            <div class="logo-container">
-                <img src="img/West CoastArtisticBanner.jpg" alt="Logo" class="logo-small">
-                <div class="logo-text">WEST COAST<br>HOMECARE</div>
+            <img src="img/West CoastArtisticBanner.jpg" alt="Logo" class="logo-small">
+            <div class="logo-details">
+                <span class="logo-text">WEST COAST<br>HOMECARE</span>
+                <span class="reg-no">REG: 2024/129640/07</span>
             </div>
-            <span class="reg-mini">REG: 2024/129640/07</span>
         </div>
 
         <nav>
-            <a href="#">Home</a>
+            <a href="#" class="active">Home</a>
             <a href="#">Services</a>
             <a href="#">About</a>
             <a href="#">Contact</a>
         </nav>
 
         <div class="header-right">
-            <a href="tel:0621247451" title="Call Nadine"><i class="fa-solid fa-phone"></i></a>
+            <a href="tel:0621247451" title="Call Us"><i class="fa-solid fa-phone"></i></a>
             <a href="mailto:info@westcoasthomecareservices.co.za" title="Email Us"><i class="fa-solid fa-envelope"></i></a>
-            <a href="#" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://wa.me/27621247451" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
         </div>
     </header>
 
     <section class="hero">
         <div class="hero-text">
             <h1>Giving you <br><span>Peace of Mind.</span></h1>
-            <p>Taking Home Based Services To The Next Level. We provide day & night care, meal prep, and specialized frail care for your loved ones.</p>
-            <a href="tel:0621247451" class="footer-eval-btn">FREE HOME EVALUATION</a>
+            <p>Taking Home Based Services To The Next Level. We provide professional care ranging from daily assistance to 24h frail care.</p>
+            <a href="tel:0621247451" class="footer-btn">FREE HOME EVALUATION</a>
         </div>
         <div class="hero-art">
             <img src="img/West CoastArtisticBanner.jpg" alt="West Coast Care Banner">
@@ -182,24 +194,24 @@
     </section>
 
     <section class="services">
-        <h2>Our Home Care Services</h2>
+        <h2>Our Professional Services</h2>
         <div class="service-grid">
-            <div class="card">Day & Night Care</div>
-            <div class="card">Meal Preparation</div>
-            <div class="card">Housekeeping</div>
-            <div class="card">Medication Reminders</div>
-            <div class="card">Hygiene Assistance</div>
-            <div class="card">Dementia Care</div>
-            <div class="card">24h Frail Care</div>
-            <div class="card">Personalised Service</div>
+            <div class="pill">Day & Night Care</div>
+            <div class="pill">Meal Preparation</div>
+            <div class="pill">Light Housekeeping</div>
+            <div class="pill">Medication Reminders</div>
+            <div class="pill">Hygiene & Dressing</div>
+            <div class="pill">Dementia Care</div>
+            <div class="pill">24h Frail Care</div>
+            <div class="pill">Personalised Proposals</div>
         </div>
     </section>
 
     <footer>
-        <a href="tel:0621247451" class="footer-eval-btn">CALL NADINE: 062 124 7451</a>
+        <a href="tel:0621247451" class="footer-btn">CALL NADINE: 062 124 7451</a>
         <p><strong>WEST COAST HOMECARE SERVICES (Pty) Ltd</strong></p>
         <p>info@westcoasthomecareservices.co.za</p>
-        <p style="font-size: 0.7rem; opacity: 0.5;">REG: 2024/129640/07</p>
+        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 20px;">REG: 2024/129640/07</p>
     </footer>
 
 </body>
