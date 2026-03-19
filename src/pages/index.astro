@@ -3,17 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>West Coast Home Care | Compassionate & Professional</title>
+    <title>West Coast Home Care | Professional Support</title>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
     <style>
-        /* BRAND COLORS */
         :root {
             --brand-pink: #E6007E;
             --brand-blue: #32B5E5;
             --brand-navy: #1A2B49;
             --sand: #F4F1EA;
             --white: #ffffff;
-            --light-gray: #f9f9f9;
         }
 
         body {
@@ -22,20 +20,15 @@
             color: var(--brand-navy);
             background-color: var(--white);
             line-height: 1.6;
-            overflow-x: hidden;
         }
 
-        /* HEADER & LOGO */
+        /* HEADER & NAVIGATION */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 8%;
             border-bottom: 1px solid #eee;
-            background: var(--white);
-            position: sticky;
-            top: 0;
-            z-index: 1000;
         }
 
         .logo-container {
@@ -45,15 +38,13 @@
         }
 
         .logo-small {
-            height: 50px; /* Scaled for website navigation */
+            height: 55px;
             width: auto;
-            border-radius: 50%;
         }
 
         .logo-text { 
             font-weight: 700; 
             font-size: 1.1rem; 
-            color: var(--brand-navy);
         }
         
         .logo-text span.blue-text { color: var(--brand-blue); }
@@ -65,42 +56,34 @@
             margin-left: 20px;
             font-size: 0.85rem;
             font-weight: 700;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: var(--brand-blue);
         }
 
         /* HERO SECTION */
         .hero {
             display: flex;
             align-items: center;
-            padding: 80px 8%;
-            background: linear-gradient(135deg, #fff 60%, var(--sand) 100%);
-            min-height: 60vh;
+            padding: 60px 8%;
+            background: linear-gradient(90deg, #fff 70%, var(--sand) 100%);
         }
 
-        .hero-text { flex: 1; max-width: 550px; }
-        .hero-text h1 { font-size: 3.2rem; line-height: 1.1; margin-bottom: 20px; color: var(--brand-navy); }
+        .hero-text { flex: 1; max-width: 500px; }
+        .hero-text h1 { font-size: 3rem; line-height: 1.1; margin-bottom: 20px; }
         .hero-text h1 span { color: var(--brand-blue); }
-        .hero-text p { font-size: 1.1rem; margin-bottom: 30px; color: #555; }
+        .hero-text p { font-size: 1.1rem; margin-bottom: 30px; }
 
         .hero-art {
             flex: 1;
             display: flex;
             justify-content: center;
-            position: relative;
         }
 
         .hero-art img {
-            width: 90%;
-            max-width: 450px;
-            filter: drop-shadow(0px 20px 40px rgba(0,0,0,0.1));
-            border-radius: 50%; /* Keeps the logo shape consistent */
+            width: 80%;
+            max-width: 400px;
+            filter: drop-shadow(0px 15px 30px rgba(0,0,0,0.1));
+            border-radius: 50%;
         }
 
-        /* BUTTONS */
         .cta-btn {
             background-color: var(--brand-pink);
             color: white;
@@ -108,102 +91,77 @@
             padding: 18px 40px;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(230, 0, 126, 0.3);
+            transition: 0.3s;
         }
 
-        .cta-btn:hover { 
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(230, 0, 126, 0.4);
-        }
+        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(230, 0, 126, 0.3); }
 
-        /* SERVICES SECTION - MEDICAL PILL SHAPES */
+        /* SERVICES SECTION - CORRECTED PILL SHAPES */
         .services {
             padding: 80px 8%;
             text-align: center;
-            background-color: var(--light-gray);
         }
 
         .services h2 {
-            font-size: 2.2rem;
-            color: var(--brand-navy);
             margin-bottom: 50px;
+            font-size: 2rem;
         }
 
         .service-grid {
             display: flex;
-            gap: 25px;
+            gap: 20px;
             justify-content: center;
             flex-wrap: wrap;
         }
 
+        /* This is the true Capsule/Pill shape */
         .card {
-            background: var(--white);
-            color: var(--brand-navy);
-            padding: 40px 25px;
-            flex: 1 1 260px;
-            max-width: 300px;
-            min-height: 150px;
+            background: var(--sand);
+            padding: 25px 45px;
+            flex: 1 1 250px;
+            max-width: 320px;
+            min-height: 100px;
             display: flex;
             align-items: center;
             justify-content: center;
+            text-align: center;
             transition: all 0.3s ease;
             cursor: pointer;
-            position: relative;
-            overflow: hidden;
             
-            /* Medical Pill/Leaf Shape */
-            border-radius: 50px 5px 50px 5px;
-            border: 1px solid rgba(0,0,0,0.05);
-            box-shadow: 0 4px 10px rgba(0,0,0,0.03);
-        }
-
-        /* Professional Accent Strip */
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 8px;
-            height: 100%;
-            background-color: var(--brand-blue);
-            transition: 0.3s;
+            /* HIGH BORDER RADIUS creates the pill look */
+            border-radius: 100px; 
+            border: 2px solid transparent;
         }
 
         .card:hover {
-            transform: translateY(-8px);
-            border-color: var(--brand-pink);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+            background-color: var(--white);
+            border-color: var(--brand-blue);
+            transform: scale(1.05);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
         }
 
-        .card:hover::before {
-            background-color: var(--brand-pink);
-        }
-
-        /* Alternating shape for rhythm */
+        /* Alternating color style for a funky/medical mix */
         .card:nth-child(2) {
-            border-radius: 5px 50px 5px 50px;
+            border-radius: 100px;
+            border: 2px solid var(--brand-blue);
+            background-color: var(--white);
         }
-        .card:nth-child(2)::before {
-            left: auto;
-            right: 0;
+
+        .card:nth-child(2):hover {
+            border-color: var(--brand-pink);
         }
 
         .card h3 {
             margin: 0;
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 700;
-            line-height: 1.4;
         }
 
         /* RESPONSIVE */
         @media (max-width: 768px) {
-            .hero { flex-direction: column; text-align: center; padding-top: 40px; }
-            .hero-text { margin-bottom: 50px; }
+            .hero { flex-direction: column; text-align: center; }
             header { flex-direction: column; gap: 15px; }
-            nav a { margin: 0 10px; }
         }
     </style>
 </head>
@@ -211,7 +169,7 @@
 
     <header>
         <div class="logo-container">
-            <img src="img/West CoastArtisticBanner.jpg" alt="West Coast Logo" class="logo-small">
+            <img src="img/West CoastArtisticBanner.jpg" alt="Logo" class="logo-small">
             <div class="logo-text">
                 West Coast <span class="blue-text">Home Care</span> <span class="pink-text">Services</span>
             </div>
@@ -226,25 +184,25 @@
     <section class="hero">
         <div class="hero-text">
             <h1>Trusted & <br><span>Personalised</span> <br>Home Care.</h1>
-            <p>Providing compassionate support for the elderly and frail, ensuring independence and joy in the heart of the West Coast.</p>
-            <button class="cta-btn">CONTACT US TODAY</button>
+            <p>Compassionate care for the elderly, frail, and those in need of respite. We bring peace of mind to your family.</p>
+            <button class="cta-btn">GET IN TOUCH</button>
         </div>
         <div class="hero-art">
-            <img src="img/West CoastArtisticBanner.jpg" alt="West Coast Care Banner">
+            <img src="img/West CoastArtisticBanner.jpg" alt="West Coast Care">
         </div>
     </section>
 
     <section class="services">
-        <h2>Specialist Care Support</h2>
+        <h2>Our Core Support</h2>
         <div class="service-grid">
             <div class="card">
-                <h3>Helping run <br> errands</h3>
+                <h3>Errands & <br> Shopping</h3>
             </div>
             <div class="card">
-                <h3>Keeping <br> appointments</h3>
+                <h3>Medical <br> Appointments</h3>
             </div>
             <div class="card">
-                <h3>Meaningful <br> Companionship</h3>
+                <h3>Respite & <br> Companionship</h3>
             </div>
         </div>
     </section>
