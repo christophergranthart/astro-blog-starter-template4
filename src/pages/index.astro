@@ -1,241 +1,221 @@
----
-// West Coast Homecare - Modern Retro Luxury Edition
-const pageTitle = "West Coast Homecare Services | Peace of Mind";
-const brandPink = "#E6007E";
-const brandBlue = "#32B5E5";
-const brandNavy = "#1A2B49";
-const bgLight = "#F8FAFC";
-
-const services = [
-  "Day & Night Care", "Meal Prep", "Housekeeping", "Medication",
-  "Hygiene", "Dementia Care", "24h Frail Care", "Companionship"
-];
-
-const testimonials = [
-    { text: "Your kindness and genuine companionship mean more to us than you know. We're truly grateful.", author: "Ldw | Family Member" },
-    { text: "The most professional and caring team on the West Coast. They treat us like family.", author: "Sarah M." },
-    { text: "Highly recommended for anyone needing specialized frail care. Nadine is wonderful.", author: "Johan P." }
-];
----
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>{pageTitle}</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>West Coast Home Care Services | Professional Support</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
     
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&family=Outfit:wght@900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
-    <style define:vars={{ brandPink, brandBlue, brandNavy, bgLight }}>
+    <style>
         :root {
-            --glass: rgba(255, 255, 255, 0.8);
-            --pink-glow: rgba(230, 0, 126, 0.15);
+            --brand-pink: #E6007E;
+            --brand-blue: #32B5E5;
+            --brand-navy: #1A2B49;
+            --sand: #F4F1EA;
+            --white: #ffffff;
         }
 
         body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: 'Comfortaa', cursive;
             margin: 0;
-            background-color: var(--bgLight);
-            color: var(--brandNavy);
-            overflow-x: hidden;
+            color: var(--brand-navy);
+            background-color: var(--white);
+            line-height: 1.6;
         }
 
-        /* --- LUXURY HEADER --- */
+        /* --- ASTRO BLOG STYLE HEADER --- */
         header {
-            display: flex;
-            justify-content: space-between;
+            display: grid;
+            grid-template-columns: 1.2fr 1fr 1.2fr; /* Creates 3 distinct zones */
             align-items: center;
-            padding: 15px 8%;
-            background: var(--glass);
-            backdrop-filter: blur(15px);
+            padding: 0 5%;
+            background: white;
+            border-bottom: 1px solid #eee;
             position: sticky;
             top: 0;
-            z-index: 100;
-            border-bottom: 1px solid rgba(0,0,0,0.05);
+            z-index: 1000;
+            height: 90px;
         }
 
-        .logo-text { font-family: 'Outfit', sans-serif; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
-
-        /* --- HERO: MESH GRADIENT LOOK --- */
-        .hero {
-            padding: 100px 8% 140px;
-            display: grid;
-            grid-template-columns: 1fr 1fr;
+        /* Left: Logo & Reg */
+        .header-left {
+            display: flex;
             align-items: center;
-            gap: 60px;
-            background: 
-                radial-gradient(at 0% 0%, var(--pink-glow) 0, transparent 50%),
-                radial-gradient(at 100% 100%, rgba(50, 181, 229, 0.1) 0, transparent 50%);
+            gap: 12px;
         }
+        .logo-small { height: 55px; width: auto; border-radius: 50%; }
+        .logo-details { display: flex; flex-direction: column; }
+        .logo-text { font-weight: 700; font-size: 0.9rem; line-height: 1.1; margin: 0; }
+        .reg-no { font-size: 0.6rem; opacity: 0.6; margin-top: 2px; }
 
-        .hero-text h1 { font-family: 'Outfit', sans-serif; font-size: 4.5rem; line-height: 1; margin: 0; }
-        .hero-text h1 span { 
-            background: linear-gradient(to right, var(--brandPink), var(--brandBlue));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
+        /* Center: Menu Items */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 35px;
+            height: 100%;
         }
-
-        .hero-art { position: relative; }
-        .hero-art img { 
-            width: 100%; 
-            border-radius: 40px; 
-            box-shadow: 0 40px 100px rgba(0,0,0,0.1);
-            transform: perspective(1000px) rotateY(-5deg);
-        }
-
-        /* --- TESTIMONIAL CAROUSEL (CLEAN) --- */
-        .testimonial-outer {
-            margin-top: -60px;
-            padding: 0 8%;
-        }
-        .testimonial-card {
-            background: var(--brandNavy);
-            color: white;
-            padding: 60px;
-            border-radius: 40px;
-            text-align: center;
-            box-shadow: 0 30px 60px rgba(26, 43, 73, 0.3);
+        nav a {
+            text-decoration: none;
+            color: var(--brand-navy);
+            font-size: 0.95rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
             position: relative;
-            overflow: hidden;
-        }
-        .slide { display: none; animation: slideIn 0.6s ease; }
-        .slide.active { display: block; }
-        .testimonial-text { font-size: 1.8rem; font-weight: 700; line-height: 1.4; margin-bottom: 20px; }
-        
-        .nav-dots { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
-        .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.2); cursor: pointer; border: none; }
-        .dot.active { background: var(--brandPink); width: 30px; border-radius: 10px; }
-
-        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
-
-        /* --- SERVICE GRID --- */
-        .services-section { padding: 100px 8%; text-align: center; }
-        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 50px; }
-        .s-card { 
-            background: white; 
-            padding: 40px; 
-            border-radius: 30px; 
+            height: 100%;
             transition: 0.3s;
-            border: 1px solid rgba(0,0,0,0.03);
-            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
         }
-        .s-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(230, 0, 126, 0.1); border-color: var(--brandPink); }
-        .s-card i { font-size: 2.5rem; color: var(--brandPink); margin-bottom: 20px; }
+        /* Blue Underline Style from your screenshot */
+        nav a:hover, nav a.active {
+            color: var(--brand-navy);
+        }
+        nav a:hover::after, nav a.active::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--brand-blue);
+        }
 
-        /* --- BUTTONS --- */
-        .btn {
-            background: var(--brandPink);
+        /* Right: Social/Contact Icons */
+        .header-right {
+            display: flex;
+            justify-content: flex-end;
+            gap: 20px;
+        }
+        .header-right a {
+            color: var(--brand-navy);
+            font-size: 1.4rem; /* Makes icons visible */
+            transition: transform 0.2s, color 0.2s;
+            text-decoration: none;
+        }
+        .header-right a:hover {
+            color: var(--brand-blue);
+            transform: translateY(-2px);
+        }
+
+        /* --- HERO SECTION --- */
+        .hero {
+            display: flex;
+            align-items: center;
+            padding: 80px 8%;
+            background: linear-gradient(135deg, #fff 70%, var(--sand) 100%);
+        }
+        .hero-text { flex: 1; max-width: 550px; }
+        .hero-text h1 { font-size: 3rem; line-height: 1.1; margin-bottom: 20px; }
+        .hero-text h1 span { color: var(--brand-pink); }
+        .hero-text p { font-size: 1.1rem; margin-bottom: 30px; }
+
+        .hero-art { flex: 1; display: flex; justify-content: center; }
+        .hero-art img { width: 85%; max-width: 450px; border-radius: 50%; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
+
+        /* --- SERVICES PILLS --- */
+        .services { padding: 60px 8%; text-align: center; }
+        .service-grid {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+        }
+        .pill {
+            background: var(--sand);
+            padding: 14px 30px;
+            border-radius: 100px; /* Pill shape */
+            font-weight: 700;
+            font-size: 0.9rem;
+            border: 1px solid transparent;
+            transition: 0.3s;
+        }
+        .pill:hover { background: white; border-color: var(--brand-blue); transform: scale(1.05); }
+
+        /* --- FOOTER --- */
+        footer {
+            background: var(--brand-navy);
             color: white;
-            padding: 20px 40px;
-            border-radius: 20px;
+            padding: 60px 8%;
+            text-align: center;
+        }
+        .footer-btn {
+            background: var(--brand-pink);
+            color: white;
+            padding: 18px 40px;
+            border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
             display: inline-block;
-            transition: 0.3s;
-            box-shadow: 0 15px 30px rgba(230, 0, 126, 0.2);
+            margin-bottom: 30px;
         }
-        .btn:hover { transform: scale(1.05); background: var(--brandNavy); }
 
-        footer { background: white; padding: 60px 8%; text-align: center; border-top: 1px solid #eee; }
-
+        /* MOBILE FIX */
         @media (max-width: 900px) {
-            .hero { grid-template-columns: 1fr; text-align: center; padding-top: 40px; }
-            .hero-text h1 { font-size: 3rem; }
-            .testimonial-card { padding: 30px; }
-            .testimonial-text { font-size: 1.2rem; }
+            header { grid-template-columns: 1fr 1fr; height: auto; padding: 15px 5%; }
+            nav { display: none; } /* Hide menu on mobile to prevent overlap */
+            .hero { flex-direction: column; text-align: center; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-text">West Coast <span style="color:var(--brandPink)">Care</span></div>
-        <a href="tel:0621247451" style="color:var(--brandNavy); font-weight:700; text-decoration:none;">062 124 7451</a>
+        <div class="header-left">
+            <img src="West CoastArtisticBanner.jpg" alt="Logo" class="logo-small">
+            <div class="logo-details">
+                <p class="logo-text">WEST COAST<br>HOMECARE</p>
+                <span class="reg-no">REG: 2024/129640/07</span>
+            </div>
+        </div>
+
+        <nav>
+            <a href="#" class="active">Home</a>
+            <a href="#">Services</a>
+            <a href="#">About</a>
+            <a href="#">Contact</a>
+        </nav>
+
+        <div class="header-right">
+            <a href="tel:0621247451" title="Call Us"><i class="fa-solid fa-phone"></i></a>
+            <a href="mailto:info@westcoasthomecareservices.co.za" title="Email Us"><i class="fa-solid fa-envelope"></i></a>
+            <a href="https://wa.me/27621247451" target="_blank" title="WhatsApp"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
     </header>
 
     <section class="hero">
         <div class="hero-text">
-            <h1>Expert Care.<br><span>Peace of Mind.</span></h1>
-            <p>Dignified, professional homecare supporting families across the West Coast with heart and excellence.</p>
-            <a href="tel:0621247451" class="btn">Get Started Today</a>
+            <h1>Giving you <br><span>Peace of Mind.</span></h1>
+            <p>Taking Home Based Services To The Next Level. We provide day & night care, meal prep, and 24h frail care for your family.</p>
+            <a href="tel:0621247451" class="footer-btn">FREE HOME EVALUATION</a>
         </div>
         <div class="hero-art">
-            <img src="/West CoastArtisticBanner.jpg" alt="Homecare">
+            <img src="West CoastArtisticBanner.jpg" alt="West Coast Care Banner">
         </div>
     </section>
 
-    <section class="testimonial-outer">
-        <div class="testimonial-card">
-            {testimonials.map((t, index) => (
-                <div class={`slide ${index === 0 ? 'active' : ''}`} data-index={index}>
-                    <p class="testimonial-text">"{t.text}"</p>
-                    <p style="color:var(--brandBlue); text-transform:uppercase; letter-spacing:2px; font-weight:700;">{t.author}</p>
-                </div>
-            ))}
-            <div class="nav-dots">
-                {testimonials.map((_, index) => (
-                    <button class={`dot ${index === 0 ? 'active' : ''}`} data-index={index}></button>
-                ))}
-            </div>
+    <section class="services">
+        <h2>Professional Home Care</h2>
+        <div class="service-grid">
+            <div class="pill">Day & Night Care</div>
+            <div class="pill">Meal Preparation</div>
+            <div class="pill">Light Housekeeping</div>
+            <div class="pill">Medication Reminders</div>
+            <div class="pill">Hygiene & Dressing</div>
+            <div class="pill">Dementia Care</div>
+            <div class="pill">24h Frail Care</div>
+            <div class="pill">Personalised Service</div>
         </div>
-    </section>
-
-    <section class="services-section">
-        <h2 style="font-family:'Outfit'; font-size: 3rem;">Our Specialized Care</h2>
-        <div class="grid">
-            <div class="s-card">
-                <i class="fa-solid fa-house-chimney-medical"></i>
-                <h3>Frail Care</h3>
-                <p>24-hour dedicated support for your loved ones in the comfort of home.</p>
-            </div>
-            <div class="s-card">
-                <i class="fa-solid fa-brain"></i>
-                <h3>Dementia Support</h3>
-                <p>Specialized, patient care for memory-related conditions.</p>
-            </div>
-            <div class="s-card">
-                <i class="fa-solid fa-heart"></i>
-                <h3>Companionship</h3>
-                <p>More than just nursing—we provide connection and emotional support.</p>
-            </div>
-        </div>
-    </section>
-
-    <section style="background:var(--brandNavy); color:white; padding: 100px 8%; text-align:center;">
-        <h2 style="font-family:'Outfit'; font-size: 3rem; margin-bottom:40px;">Ready to create a care plan?</h2>
-        <a href="tel:0621247451" class="btn">Call Nadine: 062 124 7451</a>
     </section>
 
     <footer>
-        <p style="font-weight:700;">WEST COAST HOMECARE SERVICES (Pty) Ltd</p>
-        <p style="opacity:0.6;">Saint Helena Bay | REG: 2024/129640/07</p>
+        <a href="tel:0621247451" class="footer-btn">CALL NADINE: 062 124 7451</a>
+        <p><strong>WEST COAST HOMECARE SERVICES (Pty) Ltd</strong></p>
+        <p>info@westcoasthomecareservices.co.za</p>
+        <p style="font-size: 0.7rem; opacity: 0.5; margin-top: 20px;">REG: 2024/129640/07</p>
     </footer>
 
-    <script>
-        const slides = document.querySelectorAll('.slide');
-        const dots = document.querySelectorAll('.dot');
-        let current = 0;
-
-        function showSlide(index) {
-            slides.forEach(s => s.classList.remove('active'));
-            dots.forEach(d => d.classList.remove('active'));
-            slides[index].classList.add('active');
-            dots[index].classList.add('active');
-            current = index;
-        }
-
-        dots.forEach((dot, i) => {
-            dot.addEventListener('click', () => showSlide(i));
-        });
-
-        // Auto-rotate every 5 seconds
-        setInterval(() => {
-            let next = (current + 1) % slides.length;
-            showSlide(next);
-        }, 5000);
-    </script>
 </body>
 </html>
