@@ -1,5 +1,4 @@
 ---
-// Welcome to Astro! 
 // Everything between these triple-dash lines runs at build time.
 const pageTitle = "West Coast Homecare Services | Peace of Mind";
 const brandPink = "#E6007E";
@@ -57,7 +56,14 @@ const services = [
         }
 
         .header-left { display: flex; align-items: center; gap: 12px; }
-        .logo-small { height: 55px; width: auto; border-radius: 50%; }
+        
+        /* UPDATED LOGO STYLE FOR NEW IMAGE */
+        .logo-small { 
+            height: 65px; /* Increased height for clarity */
+            width: auto; 
+            border-radius: 50%; /* Keeps it a perfect circle */
+        }
+        
         .logo-details { display: flex; flex-direction: column; }
         .logo-text { font-weight: 700; font-size: 0.85rem; line-height: 1.1; margin: 0; text-transform: uppercase; }
         .reg-no { font-size: 0.6rem; opacity: 0.7; margin-top: 2px; }
@@ -153,7 +159,7 @@ const services = [
 
     <header>
         <div class="header-left">
-            <img src="/West CoastArtisticBanner.jpg" alt="Logo" class="logo-small">
+            <img src="/logo.jpg" alt="West Coast Logo" class="logo-small">
             <div class="logo-details">
                 <p class="logo-text">WEST COAST<br>HOMECARE</p>
                 <span class="reg-no">REG: 2024/129640/07</span>
