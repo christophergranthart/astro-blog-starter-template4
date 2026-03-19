@@ -1,211 +1,241 @@
+---
+// West Coast Homecare - Modern Retro Luxury Edition
+const pageTitle = "West Coast Homecare Services | Peace of Mind";
+const brandPink = "#E6007E";
+const brandBlue = "#32B5E5";
+const brandNavy = "#1A2B49";
+const bgLight = "#F8FAFC";
+
+const services = [
+  "Day & Night Care", "Meal Prep", "Housekeeping", "Medication",
+  "Hygiene", "Dementia Care", "24h Frail Care", "Companionship"
+];
+
+const testimonials = [
+    { text: "Your kindness and genuine companionship mean more to us than you know. We're truly grateful.", author: "Ldw | Family Member" },
+    { text: "The most professional and caring team on the West Coast. They treat us like family.", author: "Sarah M." },
+    { text: "Highly recommended for anyone needing specialized frail care. Nadine is wonderful.", author: "Johan P." }
+];
+---
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>West Coast Home Care | Professional Support</title>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
-    <style>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{pageTitle}</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;700&family=Outfit:wght@900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <style define:vars={{ brandPink, brandBlue, brandNavy, bgLight }}>
         :root {
-            --brand-pink: #E6007E;
-            --brand-blue: #32B5E5;
-            --brand-navy: #1A2B49;
-            --sand: #F4F1EA;
-            --white: #ffffff;
+            --glass: rgba(255, 255, 255, 0.8);
+            --pink-glow: rgba(230, 0, 126, 0.15);
         }
 
         body {
-            font-family: 'Comfortaa', cursive;
+            font-family: 'Plus Jakarta Sans', sans-serif;
             margin: 0;
-            color: var(--brand-navy);
-            background-color: var(--white);
-            line-height: 1.6;
+            background-color: var(--bgLight);
+            color: var(--brandNavy);
+            overflow-x: hidden;
         }
 
-        /* HEADER & NAVIGATION */
+        /* --- LUXURY HEADER --- */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
             padding: 15px 8%;
-            border-bottom: 1px solid #eee;
+            background: var(--glass);
+            backdrop-filter: blur(15px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            border-bottom: 1px solid rgba(0,0,0,0.05);
         }
 
-        .logo-container {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
+        .logo-text { font-family: 'Outfit', sans-serif; font-size: 1.2rem; text-transform: uppercase; letter-spacing: 1px; }
 
-        .logo-small {
-            height: 55px;
-            width: auto;
-        }
-
-        .logo-text { 
-            font-weight: 700; 
-            font-size: 1.1rem; 
-        }
-        
-        .logo-text span.blue-text { color: var(--brand-blue); }
-        .logo-text span.pink-text { color: var(--brand-pink); }
-
-        nav a {
-            text-decoration: none;
-            color: var(--brand-navy);
-            margin-left: 20px;
-            font-size: 0.85rem;
-            font-weight: 700;
-        }
-
-        /* HERO SECTION */
+        /* --- HERO: MESH GRADIENT LOOK --- */
         .hero {
-            display: flex;
+            padding: 100px 8% 140px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
             align-items: center;
-            padding: 60px 8%;
-            background: linear-gradient(90deg, #fff 70%, var(--sand) 100%);
+            gap: 60px;
+            background: 
+                radial-gradient(at 0% 0%, var(--pink-glow) 0, transparent 50%),
+                radial-gradient(at 100% 100%, rgba(50, 181, 229, 0.1) 0, transparent 50%);
         }
 
-        .hero-text { flex: 1; max-width: 500px; }
-        .hero-text h1 { font-size: 3rem; line-height: 1.1; margin-bottom: 20px; }
-        .hero-text h1 span { color: var(--brand-blue); }
-        .hero-text p { font-size: 1.1rem; margin-bottom: 30px; }
-
-        .hero-art {
-            flex: 1;
-            display: flex;
-            justify-content: center;
+        .hero-text h1 { font-family: 'Outfit', sans-serif; font-size: 4.5rem; line-height: 1; margin: 0; }
+        .hero-text h1 span { 
+            background: linear-gradient(to right, var(--brandPink), var(--brandBlue));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
-        .hero-art img {
-            width: 80%;
-            max-width: 400px;
-            filter: drop-shadow(0px 15px 30px rgba(0,0,0,0.1));
-            border-radius: 50%;
+        .hero-art { position: relative; }
+        .hero-art img { 
+            width: 100%; 
+            border-radius: 40px; 
+            box-shadow: 0 40px 100px rgba(0,0,0,0.1);
+            transform: perspective(1000px) rotateY(-5deg);
         }
 
-        .cta-btn {
-            background-color: var(--brand-pink);
+        /* --- TESTIMONIAL CAROUSEL (CLEAN) --- */
+        .testimonial-outer {
+            margin-top: -60px;
+            padding: 0 8%;
+        }
+        .testimonial-card {
+            background: var(--brandNavy);
             color: white;
-            border: none;
-            padding: 18px 40px;
-            border-radius: 50px;
-            font-weight: 700;
-            cursor: pointer;
+            padding: 60px;
+            border-radius: 40px;
+            text-align: center;
+            box-shadow: 0 30px 60px rgba(26, 43, 73, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        .slide { display: none; animation: slideIn 0.6s ease; }
+        .slide.active { display: block; }
+        .testimonial-text { font-size: 1.8rem; font-weight: 700; line-height: 1.4; margin-bottom: 20px; }
+        
+        .nav-dots { display: flex; justify-content: center; gap: 10px; margin-top: 20px; }
+        .dot { width: 12px; height: 12px; border-radius: 50%; background: rgba(255,255,255,0.2); cursor: pointer; border: none; }
+        .dot.active { background: var(--brandPink); width: 30px; border-radius: 10px; }
+
+        @keyframes slideIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* --- SERVICE GRID --- */
+        .services-section { padding: 100px 8%; text-align: center; }
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 30px; margin-top: 50px; }
+        .s-card { 
+            background: white; 
+            padding: 40px; 
+            border-radius: 30px; 
             transition: 0.3s;
+            border: 1px solid rgba(0,0,0,0.03);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.02);
         }
+        .s-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(230, 0, 126, 0.1); border-color: var(--brandPink); }
+        .s-card i { font-size: 2.5rem; color: var(--brandPink); margin-bottom: 20px; }
 
-        .cta-btn:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(230, 0, 126, 0.3); }
-
-        /* SERVICES SECTION - CORRECTED PILL SHAPES */
-        .services {
-            padding: 80px 8%;
-            text-align: center;
-        }
-
-        .services h2 {
-            margin-bottom: 50px;
-            font-size: 2rem;
-        }
-
-        .service-grid {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-
-        /* This is the true Capsule/Pill shape */
-        .card {
-            background: var(--sand);
-            padding: 25px 45px;
-            flex: 1 1 250px;
-            max-width: 320px;
-            min-height: 100px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            transition: all 0.3s ease;
-            cursor: pointer;
-            
-            /* HIGH BORDER RADIUS creates the pill look */
-            border-radius: 100px; 
-            border: 2px solid transparent;
-        }
-
-        .card:hover {
-            background-color: var(--white);
-            border-color: var(--brand-blue);
-            transform: scale(1.05);
-            box-shadow: 0 10px 20px rgba(0,0,0,0.05);
-        }
-
-        /* Alternating color style for a funky/medical mix */
-        .card:nth-child(2) {
-            border-radius: 100px;
-            border: 2px solid var(--brand-blue);
-            background-color: var(--white);
-        }
-
-        .card:nth-child(2):hover {
-            border-color: var(--brand-pink);
-        }
-
-        .card h3 {
-            margin: 0;
-            font-size: 1.1rem;
+        /* --- BUTTONS --- */
+        .btn {
+            background: var(--brandPink);
+            color: white;
+            padding: 20px 40px;
+            border-radius: 20px;
+            text-decoration: none;
             font-weight: 700;
+            display: inline-block;
+            transition: 0.3s;
+            box-shadow: 0 15px 30px rgba(230, 0, 126, 0.2);
         }
+        .btn:hover { transform: scale(1.05); background: var(--brandNavy); }
 
-        /* RESPONSIVE */
-        @media (max-width: 768px) {
-            .hero { flex-direction: column; text-align: center; }
-            header { flex-direction: column; gap: 15px; }
+        footer { background: white; padding: 60px 8%; text-align: center; border-top: 1px solid #eee; }
+
+        @media (max-width: 900px) {
+            .hero { grid-template-columns: 1fr; text-align: center; padding-top: 40px; }
+            .hero-text h1 { font-size: 3rem; }
+            .testimonial-card { padding: 30px; }
+            .testimonial-text { font-size: 1.2rem; }
         }
     </style>
 </head>
 <body>
 
     <header>
-        <div class="logo-container">
-            <img src="img/West CoastArtisticBanner.jpg" alt="Logo" class="logo-small">
-            <div class="logo-text">
-                West Coast <span class="blue-text">Home Care</span> <span class="pink-text">Services</span>
-            </div>
-        </div>
-        <nav>
-            <a href="#">HOME</a>
-            <a href="#">SERVICES</a>
-            <a href="#">CONTACT</a>
-        </nav>
+        <div class="logo-text">West Coast <span style="color:var(--brandPink)">Care</span></div>
+        <a href="tel:0621247451" style="color:var(--brandNavy); font-weight:700; text-decoration:none;">062 124 7451</a>
     </header>
 
     <section class="hero">
         <div class="hero-text">
-            <h1>Trusted & <br><span>Personalised</span> <br>Home Care.</h1>
-            <p>Compassionate care for the elderly, frail, and those in need of respite. We bring peace of mind to your family.</p>
-            <button class="cta-btn">GET IN TOUCH</button>
+            <h1>Expert Care.<br><span>Peace of Mind.</span></h1>
+            <p>Dignified, professional homecare supporting families across the West Coast with heart and excellence.</p>
+            <a href="tel:0621247451" class="btn">Get Started Today</a>
         </div>
         <div class="hero-art">
-            <img src="img/West CoastArtisticBanner.jpg" alt="West Coast Care">
+            <img src="/West CoastArtisticBanner.jpg" alt="Homecare">
         </div>
     </section>
 
-    <section class="services">
-        <h2>Our Core Support</h2>
-        <div class="service-grid">
-            <div class="card">
-                <h3>Errands & <br> Shopping</h3>
-            </div>
-            <div class="card">
-                <h3>Medical <br> Appointments</h3>
-            </div>
-            <div class="card">
-                <h3>Respite & <br> Companionship</h3>
+    <section class="testimonial-outer">
+        <div class="testimonial-card">
+            {testimonials.map((t, index) => (
+                <div class={`slide ${index === 0 ? 'active' : ''}`} data-index={index}>
+                    <p class="testimonial-text">"{t.text}"</p>
+                    <p style="color:var(--brandBlue); text-transform:uppercase; letter-spacing:2px; font-weight:700;">{t.author}</p>
+                </div>
+            ))}
+            <div class="nav-dots">
+                {testimonials.map((_, index) => (
+                    <button class={`dot ${index === 0 ? 'active' : ''}`} data-index={index}></button>
+                ))}
             </div>
         </div>
     </section>
 
+    <section class="services-section">
+        <h2 style="font-family:'Outfit'; font-size: 3rem;">Our Specialized Care</h2>
+        <div class="grid">
+            <div class="s-card">
+                <i class="fa-solid fa-house-chimney-medical"></i>
+                <h3>Frail Care</h3>
+                <p>24-hour dedicated support for your loved ones in the comfort of home.</p>
+            </div>
+            <div class="s-card">
+                <i class="fa-solid fa-brain"></i>
+                <h3>Dementia Support</h3>
+                <p>Specialized, patient care for memory-related conditions.</p>
+            </div>
+            <div class="s-card">
+                <i class="fa-solid fa-heart"></i>
+                <h3>Companionship</h3>
+                <p>More than just nursing—we provide connection and emotional support.</p>
+            </div>
+        </div>
+    </section>
+
+    <section style="background:var(--brandNavy); color:white; padding: 100px 8%; text-align:center;">
+        <h2 style="font-family:'Outfit'; font-size: 3rem; margin-bottom:40px;">Ready to create a care plan?</h2>
+        <a href="tel:0621247451" class="btn">Call Nadine: 062 124 7451</a>
+    </section>
+
+    <footer>
+        <p style="font-weight:700;">WEST COAST HOMECARE SERVICES (Pty) Ltd</p>
+        <p style="opacity:0.6;">Saint Helena Bay | REG: 2024/129640/07</p>
+    </footer>
+
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot');
+        let current = 0;
+
+        function showSlide(index) {
+            slides.forEach(s => s.classList.remove('active'));
+            dots.forEach(d => d.classList.remove('active'));
+            slides[index].classList.add('active');
+            dots[index].classList.add('active');
+            current = index;
+        }
+
+        dots.forEach((dot, i) => {
+            dot.addEventListener('click', () => showSlide(i));
+        });
+
+        // Auto-rotate every 5 seconds
+        setInterval(() => {
+            let next = (current + 1) % slides.length;
+            showSlide(next);
+        }, 5000);
+    </script>
 </body>
 </html>
