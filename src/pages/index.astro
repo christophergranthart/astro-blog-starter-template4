@@ -3,9 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>West Coast Home Care Services | Peace of Mind</title>
+    <title>West Coast Home Care Services | Professional Support</title>
     <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
     <style>
         :root {
             --brand-pink: #E6007E;
@@ -23,72 +25,78 @@
             line-height: 1.6;
         }
 
-        /* --- HEADER LAYOUT (Astro Blog Style) --- */
+        /* --- ASTRO BLOG STYLE HEADER --- */
         header {
             display: grid;
-            grid-template-columns: 1fr auto 1fr; /* This keeps the center column centered */
+            grid-template-columns: 1.2fr 1fr 1.2fr; /* Creates 3 distinct zones */
             align-items: center;
-            padding: 10px 5%;
+            padding: 0 5%;
             background: white;
             border-bottom: 1px solid #eee;
             position: sticky;
             top: 0;
             z-index: 1000;
-            height: 80px;
+            height: 90px;
         }
 
-        /* 1. Left Section */
+        /* Left: Logo & Reg */
         .header-left {
             display: flex;
             align-items: center;
             gap: 12px;
         }
-        .logo-small { height: 50px; width: auto; }
+        .logo-small { height: 55px; width: auto; border-radius: 50%; }
         .logo-details { display: flex; flex-direction: column; }
-        .logo-text { font-weight: 700; font-size: 0.9rem; line-height: 1.1; }
-        .reg-no { font-size: 0.65rem; opacity: 0.6; margin-top: 2px; }
+        .logo-text { font-weight: 700; font-size: 0.9rem; line-height: 1.1; margin: 0; }
+        .reg-no { font-size: 0.6rem; opacity: 0.6; margin-top: 2px; }
 
-        /* 2. Center Section (Menu) */
+        /* Center: Menu Items */
         nav {
             display: flex;
-            gap: 30px;
+            justify-content: center;
+            gap: 35px;
+            height: 100%;
         }
         nav a {
             text-decoration: none;
             color: var(--brand-navy);
             font-size: 0.95rem;
             font-weight: 700;
-            padding: 28px 0; /* Matches header height for the underline */
+            display: flex;
+            align-items: center;
             position: relative;
-            transition: color 0.3s;
+            height: 100%;
+            transition: 0.3s;
         }
-        /* Blue underline from your screenshot */
+        /* Blue Underline Style from your screenshot */
         nav a:hover, nav a.active {
             color: var(--brand-navy);
         }
         nav a:hover::after, nav a.active::after {
             content: '';
             position: absolute;
-            bottom: -1px; /* Aligns with header border */
+            bottom: 0;
             left: 0;
             width: 100%;
             height: 4px;
             background: var(--brand-blue);
         }
 
-        /* 3. Right Section (Social/Contact Icons) */
+        /* Right: Social/Contact Icons */
         .header-right {
             display: flex;
             justify-content: flex-end;
-            gap: 18px;
+            gap: 20px;
         }
         .header-right a {
             color: var(--brand-navy);
-            font-size: 1.3rem;
-            transition: color 0.3s;
+            font-size: 1.4rem; /* Makes icons visible */
+            transition: transform 0.2s, color 0.2s;
+            text-decoration: none;
         }
         .header-right a:hover {
             color: var(--brand-blue);
+            transform: translateY(-2px);
         }
 
         /* --- HERO SECTION --- */
@@ -101,42 +109,42 @@
         .hero-text { flex: 1; max-width: 550px; }
         .hero-text h1 { font-size: 3rem; line-height: 1.1; margin-bottom: 20px; }
         .hero-text h1 span { color: var(--brand-pink); }
-        .hero-text p { font-size: 1.1rem; margin-bottom: 30px; color: #444; }
+        .hero-text p { font-size: 1.1rem; margin-bottom: 30px; }
 
         .hero-art { flex: 1; display: flex; justify-content: center; }
         .hero-art img { width: 85%; max-width: 450px; border-radius: 50%; box-shadow: 0 20px 40px rgba(0,0,0,0.1); }
 
         /* --- SERVICES PILLS --- */
         .services { padding: 60px 8%; text-align: center; }
-        .services h2 { margin-bottom: 40px; }
         .service-grid {
             display: flex;
-            gap: 12px;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
+            margin-top: 40px;
         }
         .pill {
             background: var(--sand);
-            padding: 12px 28px;
-            border-radius: 100px;
+            padding: 14px 30px;
+            border-radius: 100px; /* Pill shape */
             font-weight: 700;
-            font-size: 0.85rem;
+            font-size: 0.9rem;
             border: 1px solid transparent;
             transition: 0.3s;
         }
-        .pill:hover { background: white; border-color: var(--brand-blue); transform: translateY(-2px); }
+        .pill:hover { background: white; border-color: var(--brand-blue); transform: scale(1.05); }
 
         /* --- FOOTER --- */
         footer {
             background: var(--brand-navy);
             color: white;
-            padding: 50px 8%;
+            padding: 60px 8%;
             text-align: center;
         }
         .footer-btn {
             background: var(--brand-pink);
             color: white;
-            padding: 18px 35px;
+            padding: 18px 40px;
             border-radius: 50px;
             text-decoration: none;
             font-weight: 700;
@@ -144,16 +152,11 @@
             margin-bottom: 30px;
         }
 
-        /* --- MOBILE RESPONSIVENESS --- */
+        /* MOBILE FIX */
         @media (max-width: 900px) {
-            header {
-                grid-template-columns: 1fr 1fr;
-                height: auto;
-                padding: 20px 5%;
-            }
-            nav { display: none; } /* On mobile, you'd usually use a burger menu */
+            header { grid-template-columns: 1fr 1fr; height: auto; padding: 15px 5%; }
+            nav { display: none; } /* Hide menu on mobile to prevent overlap */
             .hero { flex-direction: column; text-align: center; }
-            .hero-text { margin-bottom: 40px; }
         }
     </style>
 </head>
@@ -161,9 +164,9 @@
 
     <header>
         <div class="header-left">
-            <img src="img/West CoastArtisticBanner.jpg" alt="Logo" class="logo-small">
+            <img src="West CoastArtisticBanner.jpg" alt="Logo" class="logo-small">
             <div class="logo-details">
-                <span class="logo-text">WEST COAST<br>HOMECARE</span>
+                <p class="logo-text">WEST COAST<br>HOMECARE</p>
                 <span class="reg-no">REG: 2024/129640/07</span>
             </div>
         </div>
@@ -185,16 +188,16 @@
     <section class="hero">
         <div class="hero-text">
             <h1>Giving you <br><span>Peace of Mind.</span></h1>
-            <p>Taking Home Based Services To The Next Level. We provide professional care ranging from daily assistance to 24h frail care.</p>
+            <p>Taking Home Based Services To The Next Level. We provide day & night care, meal prep, and 24h frail care for your family.</p>
             <a href="tel:0621247451" class="footer-btn">FREE HOME EVALUATION</a>
         </div>
         <div class="hero-art">
-            <img src="img/West CoastArtisticBanner.jpg" alt="West Coast Care Banner">
+            <img src="West CoastArtisticBanner.jpg" alt="West Coast Care Banner">
         </div>
     </section>
 
     <section class="services">
-        <h2>Our Professional Services</h2>
+        <h2>Professional Home Care</h2>
         <div class="service-grid">
             <div class="pill">Day & Night Care</div>
             <div class="pill">Meal Preparation</div>
@@ -203,7 +206,7 @@
             <div class="pill">Hygiene & Dressing</div>
             <div class="pill">Dementia Care</div>
             <div class="pill">24h Frail Care</div>
-            <div class="pill">Personalised Proposals</div>
+            <div class="pill">Personalised Service</div>
         </div>
     </section>
 
