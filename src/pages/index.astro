@@ -3,14 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>West Coast Home Care | Compassionate & Artistic</title>
-    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&display=swap" rel="stylesheet">
+    <title>West Coast Home Care | Professional Support</title>
+    <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;700&family=Outfit:wght@800&display=swap" rel="stylesheet">
     <style>
-        /* CSS STYLES - Updated with your Brand Colors */
         :root {
             --brand-pink: #E6007E;
             --brand-blue: #32B5E5;
             --brand-navy: #1A2B49;
+            --deep-charcoal: #1A2B49;
+            --retro-gold: #FFD700;
             --sand: #F4F1EA;
             --white: #ffffff;
         }
@@ -19,17 +20,21 @@
             font-family: 'Comfortaa', cursive;
             margin: 0;
             color: var(--brand-navy);
-            background-color: var(--white);
+            background-color: #F8FAFC; /* Fresher than the sandy brown */
             line-height: 1.6;
         }
 
-        /* Nav Bar Setup */
+        /* --- UPDATED PINK HEADER --- */
         header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 15px 8%;
-            border-bottom: 1px solid #eee;
+            padding: 10px 8%;
+            background-color: var(--brand-pink); /* Pink Background */
+            border-bottom: 5px solid var(--brand-navy);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         .logo-container {
@@ -39,101 +44,126 @@
         }
 
         .logo-small {
-            height: 50px; /* Perfect size for a navigation bar */
+            height: 60px;
             width: auto;
+            border: 2px solid var(--white);
             border-radius: 50%;
         }
 
         .logo-text { 
             font-weight: 700; 
-            font-size: 1.2rem; 
-            color: var(--brand-navy);
+            font-size: 1.1rem; 
+            color: var(--white); /* White text for contrast */
+            line-height: 1.1;
         }
         
-        .logo-text span.blue-text { color: var(--brand-blue); }
-        .logo-text span.pink-text { color: var(--brand-pink); }
-
         nav a {
             text-decoration: none;
-            color: var(--brand-navy);
+            color: var(--white);
             margin-left: 20px;
-            font-size: 0.8rem;
+            font-size: 0.85rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            transition: opacity 0.3s;
         }
 
-        /* Hero Section */
+        nav a:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        /* --- HERO SECTION WITH BOLD FRAME --- */
         .hero {
             display: flex;
             align-items: center;
-            padding: 60px 0 60px 8%;
-            overflow: hidden; 
-            background: linear-gradient(90deg, #fff 70%, var(--sand) 100%);
+            padding: 80px 8%;
+            background: radial-gradient(circle at 90% 10%, rgba(50, 181, 229, 0.1), transparent 40%);
         }
 
         .hero-text { flex: 1; max-width: 500px; }
-        .hero-text h1 { font-size: 3.2rem; line-height: 1.1; margin-bottom: 20px; color: var(--brand-navy); }
-        .hero-text h1 span { color: var(--brand-blue); }
-        .hero-text p { font-size: 1.1rem; margin-bottom: 30px; opacity: 0.9; }
+        .hero-text h1 { font-family: 'Outfit', sans-serif; font-size: 3.5rem; line-height: 1; margin-bottom: 20px; }
+        .hero-text h1 span { color: var(--brand-pink); }
+        .hero-text p { font-size: 1.2rem; margin-bottom: 30px; font-weight: 400; }
 
-        /* Artistic Image Section */
-        .hero-art {
-            flex: 1;
-            display: flex;
-            justify-content: center;
-        }
+        .hero-art { flex: 1; display: flex; justify-content: center; }
 
+        /* The Bold Frame you liked */
         .hero-art img {
-            width: 80%; /* Large but contained */
+            width: 90%;
             max-width: 450px;
-            filter: drop-shadow(0px 20px 40px rgba(0,0,0,0.1));
-            border-radius: 50%; /* Keeps the circular look of your logo */
+            border: 10px solid var(--deep-charcoal); 
+            box-shadow: 20px 20px 0 var(--retro-gold); /* Offset solid shadow */
+            transition: 0.3s ease;
         }
+        .hero-art img:hover { transform: translate(-5px, -5px); box-shadow: 25px 25px 0 var(--brand-blue); }
 
-        /* Action Button */
         .cta-btn {
-            background-color: var(--brand-pink);
+            background-color: var(--brand-navy);
             color: white;
             border: none;
-            padding: 18px 40px;
+            padding: 20px 45px;
             border-radius: 50px;
             font-weight: 700;
-            font-size: 1rem;
             cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(230, 0, 126, 0.3);
+            transition: 0.3s;
+            box-shadow: 6px 6px 0 var(--brand-pink);
         }
 
-        .cta-btn:hover { 
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(230, 0, 126, 0.4);
+        .cta-btn:hover { transform: translate(-2px, -2px); box-shadow: 8px 8px 0 var(--brand-blue); }
+
+        /* --- SERVICES WITH "STRIPE" LOOK --- */
+        .services {
+            padding: 80px 8%;
+            text-align: center;
         }
 
-        /* Services Section */
-        .services { padding: 80px 8%; text-align: center; }
+        .services h2 {
+            margin-bottom: 50px;
+            font-family: 'Outfit', sans-serif;
+            font-size: 2.5rem;
+        }
+
         .service-grid {
             display: flex;
-            gap: 25px;
-            margin-top: 50px;
+            gap: 30px;
+            justify-content: center;
+            flex-wrap: wrap;
         }
 
+        /* The "Artistic Stripe" Card style */
         .card {
-            background: var(--sand);
+            background: var(--white);
             padding: 40px;
-            flex: 1;
-            border-radius: 30px; /* Cleaner look than the extreme blob */
-            transition: 0.3s;
-            border: 2px solid transparent;
+            flex: 1 1 280px;
+            max-width: 320px;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            text-align: left;
+            transition: all 0.3s ease;
+            border-left: 15px solid var(--brand-pink); /* Bold stripe */
+            border-bottom: 6px solid var(--brand-navy);
+            box-shadow: 10px 10px 30px rgba(0,0,0,0.05);
         }
 
         .card:hover {
-            border-color: var(--brand-blue);
-            background: white;
-            transform: scale(1.02);
+            transform: translateY(-10px);
+            border-left-color: var(--brand-blue);
         }
 
-        .card h3 { margin-top: 0; font-size: 1.2rem; color: var(--brand-navy); }
+        .card h3 {
+            margin: 0;
+            font-size: 1.3rem;
+            font-weight: 700;
+            font-family: 'Outfit', sans-serif;
+        }
 
+        /* RESPONSIVE */
+        @media (max-width: 900px) {
+            .hero { flex-direction: column; text-align: center; }
+            .hero-text h1 { font-size: 2.8rem; }
+            header { flex-direction: column; height: auto; padding: 20px; gap: 15px; }
+            nav a { margin: 0 10px; }
+        }
     </style>
 </head>
 <body>
@@ -142,7 +172,7 @@
         <div class="logo-container">
             <img src="img/West CoastArtisticBanner.jpg" alt="Logo" class="logo-small">
             <div class="logo-text">
-                West Coast <span class="blue-text">Home Care</span> <span class="pink-text">Services</span>
+                WEST COAST<br>HOME CARE
             </div>
         </div>
         <nav>
@@ -154,26 +184,29 @@
 
     <section class="hero">
         <div class="hero-text">
-            <h1>Trusted & <br><span>Personalised</span> <br>Home Care.</h1>
-            <p>We help your loved ones live with joy, purpose, and independence in the heart of the West Coast.</p>
-            <button class="cta-btn">CONTACT US</button>
+            <h1>Expert Care.<br><span>Peace of Mind.</span></h1>
+            <p>Compassionate care for the elderly and frail. We bring professional support and connection to your family's doorstep.</p>
+            <button class="cta-btn">GET IN TOUCH</button>
         </div>
         <div class="hero-art">
-            <img src="img/West CoastArtisticBanner.jpg" alt="West Coast Care Artistic Banner">
+            <img src="img/West CoastArtisticBanner.jpg" alt="West Coast Care">
         </div>
     </section>
 
     <section class="services">
-        <h2>Reasons to call West Coast Care</h2>
+        <h2>Our Core Support</h2>
         <div class="service-grid">
             <div class="card">
-                <h3>Helping run <br> errands</h3>
+                <h3 style="color: var(--brand-pink);">01.</h3>
+                <h3>Errands & <br> Shopping</h3>
             </div>
             <div class="card">
-                <h3>Keeping <br> appointments</h3>
+                <h3 style="color: var(--brand-blue);">02.</h3>
+                <h3>Medical <br> Appointments</h3>
             </div>
             <div class="card">
-                <h3>Meaningful <br> Companionship</h3>
+                <h3 style="color: var(--retro-gold);">03.</h3>
+                <h3>Respite & <br> Companionship</h3>
             </div>
         </div>
     </section>
